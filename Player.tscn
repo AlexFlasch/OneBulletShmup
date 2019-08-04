@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://assets/reticle.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/PlayerShoot.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/player/PlayerExplode.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/player/ShotBounce.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -11,9 +14,10 @@
 scale = Vector2( 1.25, 1.25 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_mask = 58
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="PlayerCollider" type="CollisionShape2D" parent="KinematicBody2D"]
 scale = Vector2( 0.75, 0.75 )
 shape = SubResource( 1 )
 
@@ -30,7 +34,6 @@ position = Vector2( 70, 0 )
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D/Pivot/CameraOffset"]
 scale = Vector2( 1, 1 )
 current = true
-zoom = Vector2( 0.75, 0.75 )
 smoothing_enabled = true
 drag_margin_left = 0.35
 drag_margin_top = 0.35
@@ -42,3 +45,14 @@ editor_draw_drag_margin = true
 scale = Vector2( 0.150954, 0.150954 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -100 )
+
+[node name="PlayerShoot" type="AudioStreamPlayer2D" parent="KinematicBody2D"]
+scale = Vector2( 1, 1 )
+stream = ExtResource( 5 )
+
+[node name="PlayerDeath" type="AudioStreamPlayer2D" parent="KinematicBody2D"]
+scale = Vector2( 1, 1 )
+stream = ExtResource( 6 )
+
+[node name="ShotBounce" type="AudioStreamPlayer2D" parent="KinematicBody2D"]
+stream = ExtResource( 7 )

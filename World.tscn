@@ -55,6 +55,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries/North"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/North/StaticBody2D"]
 position = Vector2( 237.145, -304.101 )
@@ -72,6 +73,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries/South"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/South/StaticBody2D"]
 position = Vector2( 991.01, 170.786 )
@@ -89,6 +91,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries/West"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/West/StaticBody2D"]
 position = Vector2( -514.11, 168.021 )
@@ -106,6 +109,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries/East"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/East/StaticBody2D"]
 position = Vector2( 239.327, 636.434 )

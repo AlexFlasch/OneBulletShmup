@@ -10,6 +10,9 @@ enum Direction {
 
 # node references
 onready var reticle = $Reticle
+onready var player_shoot_sound = $PlayerShoot
+onready var player_death_sound = $PlayerDeath
+onready var shot_bounce_sound = $ShotBounce
 var player_shot = load('res://PlayerShot.tscn')
 
 
@@ -27,6 +30,7 @@ var speed = 0
 var velocity = Vector2()
 var last_direction = Vector2()
 var is_shot_active = false
+var shot_instance
 
 
 
@@ -100,9 +104,9 @@ func get_input(delta):
 
 func propel_shot():
 	if not is_shot_active:
-		print('shooting')
 		is_shot_active = true
-		var shot_instance = player_shot.instance()
+		shot_instance = player_shot.instance()
+		player_shoot_sound.play()
 		
 		# offset shot spawn so it spawns in front of player's aim
 		var offset = self.position.direction_to(get_local_mouse_position() * deg2rad(90)).normalized() * 1.1
@@ -113,6 +117,13 @@ func propel_shot():
 
 
 
-func  retrieve_shot():
-	pass
+func retrieve_shot():
+	if shot_instance:
+		shot_instance.is_propelling = false
 # end retrieve_shot
+
+
+
+func on_shot_bounce():
+	shot_bounce_sound.play()
+# end on_shot_bounce
