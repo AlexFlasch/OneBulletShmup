@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex"
+path="res://.import/EnemyShot_ProgrammerArt.png-30d33b41e97478eda52b3c293fe7b92d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/sprites/idle uncharged.png"
-dest_files=[ "res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex" ]
+source_file="res://assets/enemies/enemy_shot/EnemyShot_ProgrammerArt.png"
+dest_files=[ "res://.import/EnemyShot_ProgrammerArt.png-30d33b41e97478eda52b3c293fe7b92d.stex" ]
 
 [params]
 

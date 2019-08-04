@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/world/World.gd" type="Script" id=1]
+[ext_resource path="res://scripts/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/munro-small.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -511.501, -300.643, 0, 0, 0, 0, 988.499, -300.643, 0, 0, 0, 0, 988.499, 639.357, 0, 0, 0, 0, -511.501, 639.357, 0, 0, 0, 0, -511.501, -300.643, 0, 0, 0, 0, -511.501, -300.643, 0, 0, 0, 0, -511.501, -300.643 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 164.188, 267.59 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 148.912, 473.21 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 219.229, 469.813 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1043.09, 147.211 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -292.177, 634.774 ],
+"_edit_vertical_guides_": [ -501.989, 976.122 ]
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 230, 160 )
+
+[node name="EnemySpawnArea" type="Path2D" parent="."]
+visible = false
+curve = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Boundaries" type="Node2D" parent="."]
+show_behind_parent = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="North" type="Line2D" parent="Boundaries"]
+z_index = 1
+points = PoolVector2Array( -511.501, -300.643, 988.499, -300.643 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1075314688
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NorthBoundaryCollider" type="StaticBody2D" parent="Boundaries/North"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/North/NorthBoundaryCollider"]
+position = Vector2( 237.145, -386.661 )
+rotation = -3.14159
+scale = Vector2( 5.5004, 0.338658 )
+z_index = 53
+shape = SubResource( 2 )
+
+[node name="South" type="Line2D" parent="Boundaries"]
+z_index = 1
+points = PoolVector2Array( -511.501, 639.357, 988.499, 639.357 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1075314688
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SouthBoundaryCollider" type="StaticBody2D" parent="Boundaries/South"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/South/SouthBoundaryCollider"]
+position = Vector2( 1133.39, 170.786 )
+z_index = 1
+shape = SubResource( 3 )
+
+[node name="West" type="Line2D" parent="Boundaries"]
+position = Vector2( -0.0202637, -1.76113 )
+scale = Vector2( 1, 1.0106 )
+z_index = 1
+points = PoolVector2Array( -511.501, -300.643, -511.501, 639.357 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 56
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WestBoundaryCollider" type="StaticBody2D" parent="Boundaries/West"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/West/WestBoundaryCollider"]
+position = Vector2( -726.02, 168.021 )
+z_index = 1
+shape = SubResource( 4 )
+
+[node name="East" type="Line2D" parent="Boundaries"]
+position = Vector2( 0, -1.7575 )
+scale = Vector2( 1, 1.01062 )
+z_index = 1
+points = PoolVector2Array( 988.499, -300.643, 988.499, 639.357 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1059061760
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EastBoundaryCollider" type="StaticBody2D" parent="Boundaries/East"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/East/EastBoundaryCollider"]
+position = Vector2( 239.327, 776.254 )
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="EnemySpawn" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="GUI"]
+margin_left = 10.0544
+margin_top = 10.0
+margin_right = 50.0544
+margin_bottom = 23.156
+custom_fonts/font = SubResource( 6 )
+text = "SCORE:"
+
+[node name="Score" type="Label" parent="GUI"]
+margin_left = 89.0
+margin_top = 10.0
+margin_right = 98.6603
+margin_bottom = 25.8717
+custom_fonts/font = SubResource( 7 )
+text = "0"
+[connection signal="timeout" from="EnemySpawn" to="." method="_on_EnemySpawn_timeout"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex"
+path="res://.import/Starmap_sparse.png-3b2c6ab969ccf870dcba9fca6fcb4806.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/sprites/idle uncharged.png"
-dest_files=[ "res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex" ]
+source_file="res://assets/bg/Starmap_sparse.png"
+dest_files=[ "res://.import/Starmap_sparse.png-3b2c6ab969ccf870dcba9fca6fcb4806.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

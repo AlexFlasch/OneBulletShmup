@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/enemies/long_range/LongRangeEnemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/long_range/LongRange_ProgrammerArt.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/sounds/EnemyShoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/enemies/sounds/EnemyExplode.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0857
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.681223 )
+colors = PoolColorArray( 1, 0.396078, 0.188235, 1, 0.113281, 0.113281, 0.113281, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 6.18524, 0, 0, Vector2( 0.974526, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 14.3
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="LongRangeEnemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 37
+script = ExtResource( 1 )
+
+[node name="LongRangeSprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="LongRangeCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="ShotCooldown" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="DirectionChange" type="Timer" parent="."]
+autostart = true
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="DeletionTimer" type="Timer" parent="."]
+wait_time = 1.25
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+amount = 256
+local_coords = false
+process_material = SubResource( 6 )
+[connection signal="timeout" from="ShotCooldown" to="." method="_on_ShotCooldown_timeout"]
+[connection signal="timeout" from="DirectionChange" to="." method="_on_DirectionChange_timeout"]
+[connection signal="timeout" from="DeletionTimer" to="." method="_on_DeletionTimer_timeout"]

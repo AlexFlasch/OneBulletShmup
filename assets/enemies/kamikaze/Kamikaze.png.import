@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex"
+path="res://.import/Kamikaze.png-d5aca94e22744faac1c6604c7b249faa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/sprites/idle uncharged.png"
-dest_files=[ "res://.import/idle uncharged.png-c9d1f91fa81fc137f089882759af820e.stex" ]
+source_file="res://assets/enemies/kamikaze/Kamikaze.png"
+dest_files=[ "res://.import/Kamikaze.png-d5aca94e22744faac1c6604c7b249faa.stex" ]
 
 [params]
 

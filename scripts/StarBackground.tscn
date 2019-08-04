@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/bg/Starmap_dense.png" type="Texture" id=1]
+[ext_resource path="res://assets/bg/Starmap_sparse.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxBack" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 64, 64 )
+
+[node name="DenseStars" type="Sprite" parent="ParallaxBack"]
+material = SubResource( 1 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -8.63, -200.69 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 999, 999 )
+
+[node name="ParallaxFront" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1.1, 1.1 )
+motion_mirroring = Vector2( 64, 64 )
+
+[node name="SparseStars" type="Sprite" parent="ParallaxFront"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -8.63, -200.69 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 999, 999 )

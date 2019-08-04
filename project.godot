@@ -16,8 +16,11 @@ _global_script_class_icons={
 [application]
 
 config/name="OneBulletShmup"
-run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scripts/world/World.tscn"
+
+[display]
+
+window/dpi/allow_hidpi=true
 
 [input]
 
@@ -63,7 +66,9 @@ shoot={
 2d_physics/layer_4="enemy_shot"
 2d_physics/layer_5="power_up"
 2d_physics/layer_6="environment"
+2d_physics/layer_20="dead_stuff"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
