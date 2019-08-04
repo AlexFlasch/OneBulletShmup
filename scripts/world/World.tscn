@@ -23,10 +23,14 @@ extents = Vector2( 1043.09, 147.211 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [node name="World" type="Node2D"]

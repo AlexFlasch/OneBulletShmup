@@ -10,6 +10,7 @@ onready var preparation_timer = $AttackPreparationTimer
 onready var preparation_tween = $AttackPreparationTween
 onready var attack_tween = $AttackTween
 onready var attack_cooldown_timer = $AttackCooldownTimer
+onready var explosion_particles = $ExplosionParticles
 
 # constants
 const SPEED = 1
@@ -84,9 +85,10 @@ func preparation_color_tween(value):
 
 func kill():
 	self.collision_layer = 20
-	self.visible = false
+	kamikaze_sprite.visible = false
 	$KamikazeCollision.disabled = true
 	death_sound.play()
+	explosion_particles.emitting = true
 	deletion_timer.start()
 # end kill
 

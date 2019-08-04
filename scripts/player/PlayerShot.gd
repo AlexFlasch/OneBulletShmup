@@ -31,6 +31,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	self.visible = true
 	if is_propelling:
 		self.set_collision_mask_bit(PLAYER_COLLISION_MASK_BIT, false)
 		var collision = move_and_collide(shot_trajectory * SPEED, true)

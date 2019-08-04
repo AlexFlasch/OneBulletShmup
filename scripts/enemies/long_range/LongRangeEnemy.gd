@@ -7,6 +7,7 @@ onready var shot_sound = $ShotSound
 onready var death_sound = $DeathSound
 onready var deletion_timer = $DeletionTimer
 onready var long_range_sprite = $LongRangeSprite
+onready var explostion_particles = $ExplosionParticles
 onready var player = $'../../Player'
 
 
@@ -28,6 +29,7 @@ func _ready():
 
 
 func _process(delta):
+	self.rotation = self.global_position.direction_to(player.global_position).angle() + deg2rad(-90)
 	move_and_slide(direction * SPEED)
 # end _process
 
@@ -53,8 +55,9 @@ func change_direction():
 
 func kill():
 	self.collision_layer = 20
-	self.visible = false
+	long_range_sprite.visible = false
 	$LongRangeCollision.disabled = true
+	explostion_particles.emitting = true
 	death_sound.play()
 	deletion_timer.start()
 # end kill

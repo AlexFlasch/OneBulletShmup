@@ -15,6 +15,7 @@ onready var shot_cooldown_timer = $ShotCooldown
 onready var shot_dissipate_cooldown_timer = $ShotDissipateCooldown
 onready var deletion_timer = $DeletionTimer
 onready var player_camera = $Pivot/CameraOffset/PlayerCamera
+onready var explosion_particles = $ExplosionParticles
 var player_shot = load('res://scripts/Player/PlayerShot.tscn')
 
 
@@ -134,6 +135,7 @@ func kill():
 	deletion_timer.start()
 	reticle_sprite.visible = false
 	player_sprite.visible = false
+	explosion_particles.emitting = true
 	shot_ready_light.energy = 0
 	player_collider.disabled = true
 # end kill
@@ -145,10 +147,6 @@ func propel_shot():
 		shot_ready_light.energy = 0.01
 		is_shot_active = true
 		shot_instance = player_shot.instance()
-		# offset shot spawn so it spawns in front of player's aim
-		var offset = self.global_position.direction_to(get_global_mouse_position()) * 25
-		shot_instance.position += offset
-		shot_instance.set_visible(true)
 		player_shoot_sound.play()
 		
 		
