@@ -52,7 +52,7 @@ func _ready():
 func _process(delta):
 	if is_invincible:
 		$KamikazeCollision.disabled = true
-	else:
+	elif not is_invincible and hp > 0:
 		$KamikazeCollision.disabled = false
 	
 	attack_tween.interpolate_property(self, 'position', self.position, player_attack_pos, 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN)

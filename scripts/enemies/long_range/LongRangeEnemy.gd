@@ -44,7 +44,7 @@ func _ready():
 func _process(delta):
 	if is_invincible:
 		$LongRangeCollision.disabled = true
-	else:
+	elif not is_invincible and hp > 0:
 		$LongRangeCollision.disabled = false
 	
 	self.rotation = self.global_position.direction_to(player.global_position).angle() + deg2rad(-90)

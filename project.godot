@@ -20,6 +20,7 @@ run/main_scene="res://scripts/world/World.tscn"
 
 [display]
 
+window/size/resizable=false
 window/dpi/allow_hidpi=true
 
 [input]

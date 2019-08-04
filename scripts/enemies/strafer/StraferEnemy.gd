@@ -47,7 +47,7 @@ func _ready():
 func _process(delta):
 	if is_invincible:
 		$StraferCollider.disabled = true
-	else:
+	elif not is_invincible and hp > 0:
 		$StraferCollider.disabled = false
 	
 	distance_to_player = self.global_position.distance_to(player.global_position)
