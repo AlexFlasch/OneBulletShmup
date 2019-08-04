@@ -32,6 +32,9 @@ func _ready():
 func _process(delta):
 	if int(score.text) / 500 >= big_bads_spawned + 1:
 		spawn_big_bad()
+	
+	if Input.is_action_just_pressed('restart'):
+		get_tree().reload_current_scene()
 # end _process
 
 

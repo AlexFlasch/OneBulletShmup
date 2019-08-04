@@ -175,4 +175,3 @@ process_material = ExtResource( 14 )
 [connection signal="timeout" from="Pivot/CameraOffset/PlayerCamera/ShakeDuration" to="Pivot/CameraOffset/PlayerCamera" method="_on_ShakeDuration_timeout"]
 [connection signal="timeout" from="ShotDissipateCooldown" to="." method="_on_ShotDissipateCooldown_timeout"]
 [connection signal="timeout" from="ShotCooldown" to="." method="_on_ShotCooldown_timeout"]
-[connection signal="timeout" from="DeletionTimer" to="." method="_on_DeletionTimer_timeout"]
