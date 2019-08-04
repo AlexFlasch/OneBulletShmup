@@ -51,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Boundaries" type="Node2D" parent="."]
+editor/display_folded = true
 show_behind_parent = true
 __meta__ = {
 "_edit_lock_": true

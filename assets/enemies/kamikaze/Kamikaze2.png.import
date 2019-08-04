@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reticle.png-8d03491a0ceb3e297f79179edfbdc35b.stex"
+path="res://.import/Kamikaze2.png-aa91a4ee1fe8faf8658b103a2d546ca6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/reticle.png"
-dest_files=[ "res://.import/reticle.png-8d03491a0ceb3e297f79179edfbdc35b.stex" ]
+source_file="res://assets/enemies/kamikaze/Kamikaze2.png"
+dest_files=[ "res://.import/Kamikaze2.png-aa91a4ee1fe8faf8658b103a2d546ca6.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

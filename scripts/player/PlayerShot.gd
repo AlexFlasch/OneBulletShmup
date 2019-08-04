@@ -51,6 +51,7 @@ func _physics_process(delta):
 func handle_collision(collision, is_retrieving = false):
 	var collider = collision.get_collider()
 	
+	print('player shot colliding with: ' + str(collider.name))
 	# handle collision types
 	if 'Player' in collider.name and is_retrieving:
 		player.is_shot_active = false
@@ -61,8 +62,8 @@ func handle_collision(collision, is_retrieving = false):
 		player.on_enemy_kill()
 		kills += 1
 		display_combo_counter(collider.global_position)
-		collider.kill()
-		update_score()
+		collider.hit()
+		update_score(collider)
 		
 	
 	# bounce shot if necessary
@@ -92,8 +93,13 @@ func display_combo_counter(kill_pos):
 
 
 
-func update_score():
+func update_score(enemy_killed):
+	var score_multiplier = 100
+	
+	if enemy_killed.is_big_bad:
+		score_multiplier = 200
+	
 	var current_score = int(score.text)
-	var updated_score = current_score + kills * 100
+	var updated_score = current_score + kills * score_multiplier
 	score.text = str(updated_score)
 # end update_score

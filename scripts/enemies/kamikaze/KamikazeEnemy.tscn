@@ -93,7 +93,11 @@ explosiveness = 1.0
 randomness = 1.0
 local_coords = false
 process_material = ExtResource( 5 )
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="timeout" from="DeletionTimer" to="." method="_on_DeletionTimer_timeout"]
 [connection signal="timeout" from="AttackPreparationTimer" to="." method="_on_AttackPreparationTimer_timeout"]
 [connection signal="tween_all_completed" from="AttackTween" to="." method="_on_AttackTween_tween_all_completed"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
