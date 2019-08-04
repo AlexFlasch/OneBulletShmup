@@ -20,7 +20,7 @@ var bounces = 0
 
 func _ready():
 	set_physics_process(true)
-	shot_trajectory = (get_global_mouse_position() - self.global_position).normalized()
+	shot_trajectory = player.global_position.direction_to(get_global_mouse_position())
 	set_as_toplevel(true)
 # end _ready
 
@@ -34,17 +34,19 @@ func _physics_process(delta):
 	if is_propelling:
 		var collision = move_and_collide(shot_trajectory * SPEED, true)
 		if collision:
+			# only call on_shot_bounce if the shot isn't about to be deleted
 			if not bounces == MAX_BOUNCES:
 				player.on_shot_bounce()
 			
+			print('bouncing')
 			shot_trajectory = shot_trajectory.bounce(collision.normal)
 			bounces += 1
 	else:
 		print('retrieving shot')
-		shot_trajectory = self.position.direction_to(player.position)
+		shot_trajectory = self.global_position.direction_to(player.global_position)
 		var collision = move_and_collide(shot_trajectory * SPEED, true)
 		if collision and 'Player' in collision.get_collider().name:
-			print('shot collected')
+			print('collider name' + collision.get_collider().name)
 			player.is_shot_active = false
 			queue_free()
 # end _physics_process

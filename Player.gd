@@ -109,9 +109,10 @@ func propel_shot():
 		player_shoot_sound.play()
 		
 		# offset shot spawn so it spawns in front of player's aim
-		var offset = self.position.direction_to(get_local_mouse_position() * deg2rad(90)).normalized() * 1.1
+		var offset = self.global_position.direction_to(get_global_mouse_position()) * 25
 		
 		shot_instance.set_name('shot')
+		shot_instance.global_position += offset
 		add_child(shot_instance)
 # end propel_shot
 
